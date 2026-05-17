@@ -31,6 +31,11 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Run tests
       run: mvn test
+            # Submit dependency snapshot (requires Dependency Graph enabled)
+    - name: Submit Dependency Snapshot
+      uses: actions/dependency-review-action@v4
+      with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
